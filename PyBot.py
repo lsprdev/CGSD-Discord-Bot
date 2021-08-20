@@ -6,7 +6,7 @@ class MyClient(discord.Client):
         print('Logged on as', self.user)
 
     async def on_message(self, message):
-        # don't respond to ourselves
+
         if message.author == self.user:
             return
 
@@ -14,4 +14,4 @@ class MyClient(discord.Client):
             await message.channel.send('pong')
 
 client = MyClient()
-client.run('token')
+client.run('Put your bot token here')
