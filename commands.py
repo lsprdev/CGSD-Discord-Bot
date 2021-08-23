@@ -2,42 +2,65 @@ import discord
 from discord.ext import commands
 from datetime import datetime
 
-# RESPONDE O HELLO
-async def say_hello(self):
-  if self.content == 'hello':
-    await self.reply('Hello!') 
-
-
 #Aqui dentro vamos colocar o Embed do bot, com sua descrição e comandos
-async def reply_embed(self):
-    if self.content.startswith('#'):
+async def reply_embed(self, cli):
+    if self.content.startswith(';'):
           # EMBEDED
       if 'help' in self.content:
         embed = discord.Embed(
-
         title="COMANDOS:", 
         description="", 
-        colour=0x87CEEB,
+        colour=0x4D1648,
         timestamp=datetime.utcnow()
-
         )
-        embed.add_field(name="Prefixo:", value="#", inline=False)
-        embed.add_field(name="Comandos:", value="help, mercado, ping", inline=False)
+        embed.add_field(name="Prefixo:", value=";", inline=False)
+        embed.add_field(name="Comandos:", value="help, ping, mercado", inline=False)
  
         await self.reply(embed = embed)
+      else:
+        pass
+
+
+
+
+
+
 
           # FIM EMBEDED
 
-async def say_ping(self, cli):
-    if 'ping' in self.content:
-      await self.reply(f'Pong! {round(cli.latency * 1000)}ms')
+      if 'ping' in self.content:
+        await self.reply(f'Pong! {round(cli.latency * 1000)}ms')
         
-        
-        # ois = ['Oi', 'oi', 'OI', 'oI', 'Oi!']
-        # if message.content == message.content:
-        #   for o in ois:
-        #     if message.content == o:
-        #       await message.reply('Oi!')
-        #     else:
-        #       pass
+
+      if 'mercado' in self.content:
+        embed = discord.Embed(
+
+        title="COMANDOS MERCADO:", 
+        description="Aqui você poderá comprar tags entre outras coisas dentro do servidor", 
+        colour=0x000000,
+        timestamp=datetime.utcnow()
+
+        )
+        embed.add_field(name="Prefixo:", value=";", inline=False)
+        embed.add_field(name="Disponíveis pra a compra:", value="Tripulante Bronze, Tripulane Prata, Tripulante Ouro, Tripulante Diamante.", inline=False)
+        embed.add_field(name="Comandos:", value="comprar(tag que você deseja comprar)",
+        inline=False)
+        embed.add_field(name='Exemplo:', value='comprar(Tripulante Bronze)')
+ 
+        await self.reply(embed = embed)
+
+      else:
+        pass
+
+
+# RESPONDE O Oi
+async def say_hi(self):
+  ois = ['Oi', 'oi', 'OI', 'oI', 'Oi!']
+  if self.content == self.content:
+    for o in ois:
+      if self.content == o:
+        await self.reply('Oi!')
+
+      else:
+        pass
         
